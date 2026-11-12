@@ -79,7 +79,6 @@ class Program
         Console.WriteLine("0. Volver");
     }
 
-    // ===================== GASTOS =====================
     static void MenuGastos()
     {
         bool volver = false;
@@ -181,7 +180,6 @@ class Program
             ListarCategorias();
             int categoria = LeerEntero("Número de la categoría: ");
 
-            // Validación agregada: comprobar que la categoría exista.
             if (!categorias.ContainsKey(categoria))
             {
                 Console.WriteLine("Esa categoría no existe.");
@@ -202,7 +200,6 @@ class Program
             decimal minimo = LeerMonto("Monto mínimo: ");
             decimal maximo = LeerMonto("Monto máximo: ");
 
-            // Validación agregada: el mínimo no puede superar al máximo.
             if (minimo > maximo)
             {
                 Console.WriteLine("El monto mínimo no puede ser mayor que el monto máximo.");
@@ -354,7 +351,6 @@ class Program
         }
     }
 
-    // ===================== INGRESOS =====================
     static void MenuIngresos()
     {
         bool volver = false;
@@ -438,7 +434,6 @@ class Program
             decimal minimo = LeerMonto("Monto mínimo: ");
             decimal maximo = LeerMonto("Monto máximo: ");
 
-            // Validación agregada: el mínimo no puede superar al máximo.
             if (minimo > maximo)
             {
                 Console.WriteLine("El monto mínimo no puede ser mayor que el monto máximo.");
@@ -570,7 +565,6 @@ class Program
         }
     }
 
-    // ===================== CATEGORÍAS =====================
     static void MenuCategorias()
     {
         bool volver = false;
@@ -672,7 +666,6 @@ class Program
 
         string nuevoNombre = LeerTexto("Nuevo nombre: ");
 
-        // Validación agregada: no permitir el nombre de otra categoría.
         foreach (KeyValuePair<int, string> par in categorias)
         {
             if (par.Key != numero
@@ -727,7 +720,6 @@ class Program
         return "(sin categoría)";
     }
 
-    // ===================== BALANCE =====================
     static void MostrarBalance()
     {
         decimal totalIngresos = 0;
@@ -779,10 +771,6 @@ class Program
         }
     }
 
-    // ===================== VALIDACIONES =====================
-
-    // Lee una línea de la consola. Si la entrada se cierra (null), termina el programa
-    // para evitar ciclos infinitos.
     static string LeerLinea()
     {
         string linea = Console.ReadLine();
@@ -812,7 +800,6 @@ class Program
         }
     }
 
-    // Acepta tanto 10.50 como 10,50, sin depender de la configuración regional.
     static bool TryParseMonto(string texto, out decimal valor)
     {
         texto = texto.Trim().Replace(',', '.');
